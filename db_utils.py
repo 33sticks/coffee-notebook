@@ -13,7 +13,7 @@ def get_connection():
 def fetch_unique_values(column, table):
     conn = get_connection()
     if conn:
-        st.pring("Go conn")
+        st.print("Got conn")
         cursor = conn.cursor()
         query = f"SELECT DISTINCT {column} FROM {table}"
         cursor.execute(query)
@@ -22,6 +22,7 @@ def fetch_unique_values(column, table):
         conn.close()
         return [value[0] for value in values]
     else:
+        st.print("Non conn")
         return []
 
 def fetch_beans(path, value):
