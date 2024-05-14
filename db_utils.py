@@ -4,6 +4,9 @@ from mysql.connector import Error
 
 def get_connection():
     try:
+        st.write("Connecting to MySQL")
+        st.write(st.secrets.db_credentials.user)
+        st.write(st.secrets.db_credentials.host)
         connection = mysql.connector.connect(user=st.secrets.db_credentials.user, password=st.secrets.db_credentials.password, host=st.secrets.db_credentials.host, database=st.secrets.db_credentials.database)
         st.write("Connecting to MySQL")
         st.write(st.secrets.db_credentials.user)
