@@ -5,19 +5,14 @@ from mysql.connector import Error
 def get_connection():
     try:
         connection = mysql.connector.connect(user=st.secrets.db_credentials.user, password=st.secrets.db_credentials.password, host=st.secrets.db_credentials.host, database=st.secrets.db_credentials.database)
-        st.write("Connecting to MySQL")
-        st.write(st.secrets.db_credentials.user)
-        st.write(st.secrets.db_credentials.host)
         return connection
     except Error as e:
         st.write(f"Error connecting to MySQL: {e}")
-        print(f"Error connecting to MySQL: {e}")
         return None
 
 def fetch_unique_values(column, table):
     conn = get_connection()
     if conn:
-        st.write("Got conn")
         cursor = conn.cursor()
         query = f"SELECT DISTINCT {column} FROM {table}"
         cursor.execute(query)
@@ -26,7 +21,6 @@ def fetch_unique_values(column, table):
         conn.close()
         return [value[0] for value in values]
     else:
-        st.write("Non conn")
         return []
 
 def fetch_beans(path, value):
