@@ -12,6 +12,7 @@ def get_connection():
         return None
 
 def fetch_unique_values(column, table):
+    st.write(st.secrets.db_credentails.DB_USERNAME)
     conn = get_connection()
     if conn:
         cursor = conn.cursor()
