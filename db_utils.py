@@ -14,7 +14,6 @@ def get_connection():
 
 def fetch_unique_values(column, table):
     conn = get_connection()
-    st.write(conn)
     if conn:
         cursor = conn.cursor()
         query = f"SELECT DISTINCT {column} FROM {table}"
