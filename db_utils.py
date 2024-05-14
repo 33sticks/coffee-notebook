@@ -4,9 +4,8 @@ from mysql.connector import Error
 
 def get_connection():
     try:
-        #connection = mysql.connector.connect(**DATABASE)
         connection = mysql.connector.connect(user=st.secrets.db_credentials.DB_USERNAME, password=st.secrets.db_credentials.DB_PASSWORD, host=st.secrets.db_credentials.DB_HOST, database=st.secrets.db_credentials.DB_DATABASE)
-        st.write(connection)
+        st.write(st.secrets.db_credentails.DB_USERNAME)
         return connection
     except Error as e:
         print(f"Error connecting to MySQL: {e}")
