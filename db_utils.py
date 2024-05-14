@@ -6,7 +6,6 @@ def get_connection():
     try:
         #connection = mysql.connector.connect(**DATABASE)
         connection = mysql.connector.connect(user=st.secrets.db_credentials.DB_USERNAME, password=st.secrets.db_credentials.DB_PASSWORD, host=st.secrets.db_credentials.DB_HOST, database=st.secrets.db_credentials.DB_DATABASE)
-        st.print(connection)
         return connection
     except Error as e:
         print(f"Error connecting to MySQL: {e}")
@@ -14,6 +13,7 @@ def get_connection():
 
 def fetch_unique_values(column, table):
     conn = get_connection()
+    print(conn)
     if conn:
         cursor = conn.cursor()
         query = f"SELECT DISTINCT {column} FROM {table}"
