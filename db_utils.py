@@ -1,7 +1,6 @@
 import mysql.connector
 import streamlit as st
 from mysql.connector import Error
-from config import DATABASE
 
 def get_connection():
     try:
