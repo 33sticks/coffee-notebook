@@ -10,6 +10,7 @@ def get_connection():
         st.write(st.secrets.db_credentials.host)
         return connection
     except Error as e:
+        st.write(f"Error connecting to MySQL: {e}")
         print(f"Error connecting to MySQL: {e}")
         return None
 
