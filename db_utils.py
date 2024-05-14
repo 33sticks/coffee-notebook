@@ -5,6 +5,7 @@ from mysql.connector import Error
 def get_connection():
     try:
         connection = mysql.connector.connect(user=st.secrets.db_credentials.user, password=st.secrets.db_credentials.password, host=st.secrets.db_credentials.host, database=st.secrets.db_credentials.database)
+        print(f"Connecting to MySQL at {db_config['host']} as {db_config['user']}")
         return connection
     except Error as e:
         print(f"Error connecting to MySQL: {e}")
