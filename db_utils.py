@@ -5,7 +5,6 @@ from mysql.connector import Error
 def get_connection():
     try:
         connection = mysql.connector.connect(user=st.secrets.db_credentials.user, password=st.secrets.db_credentials.password, host=st.secrets.db_credentials.host, database=st.secrets.db_credentials.database)
-        st.write(connection)
         return connection
     except Error as e:
         print(f"Error connecting to MySQL: {e}")
@@ -14,6 +13,7 @@ def get_connection():
 def fetch_unique_values(column, table):
     conn = get_connection()
     if conn:
+        st.pring("Go conn")
         cursor = conn.cursor()
         query = f"SELECT DISTINCT {column} FROM {table}"
         cursor.execute(query)
