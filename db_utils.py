@@ -3,8 +3,8 @@ import streamlit as st
 from mysql.connector import Error
 
 def get_connection():
-    st.write(st.secrets.db_credentials.DB_USERNAME)
     try:
+        st.write(st.secrets.db_credentials.DB_USERNAME)
         connection = mysql.connector.connect(user=st.secrets.db_credentials.DB_USERNAME, password=st.secrets.db_credentials.DB_PASSWORD, host=st.secrets.db_credentials.DB_HOST, database=st.secrets.db_credentials.DB_DATABASE)
         return connection
     except Error as e:
@@ -12,7 +12,6 @@ def get_connection():
         return None
 
 def fetch_unique_values(column, table):
-    st.write(st.secrets.db_credentials.DB_USERNAME)
     conn = get_connection()
     if conn:
         cursor = conn.cursor()
