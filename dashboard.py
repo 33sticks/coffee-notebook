@@ -1,7 +1,31 @@
 import streamlit as st
-from db_utils import fetch_unique_values, fetch_beans, fetch_brewing_methods, fetch_tasting_notes
+from db_utils import fetch_unique_values, fetch_beans, fetch_brewing_methods, fetch_tasting_notes, fetch_tasting_note_details
 import pandas as pd
 import matplotlib.pyplot as plt
+
+def display_tasting_note_card(tasting_note_id):
+    details = fetch_tasting_note_details(tasting_note_id)
+    if details:
+        card_html = f"""
+        <div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); margin-top: 20px;">
+            <h3>{details['bean_name']}</h3>
+            <p><strong>Date:</strong> {details['tasting_date']}</p>
+            <p><strong>Aroma:</strong> {details['aroma']}</p>
+            <p><strong>Body:</strong> {details['body']}</p>
+            <p><strong>Flavor Profile:</strong> {details['flavor_profile']}</p>
+            <p><strong>Rating:</strong> {details['rating']}</p>
+            <p><strong>Notes:</strong> {details['notes']}</p>
+            <h4>Brewing Details</h4>
+            <p><strong>Grind Size:</strong> {details['grind_size']}</p>
+            <p><strong>Brew Time:</strong> {details['brew_time']}</p>
+            <p><strong>Temperature:</strong> {details['temperature']}</p>
+            <p><strong>Brewing Notes:</strong> {details['brewing_notes']}</p>
+            <p><strong>Equipment Type:</strong> {details['equipment_type']}</p>
+        </div>
+        """
+        st.markdown(card_html, unsafe_allow_html=True)
+    else:
+        st.write("No details available for this tasting note.")
 
 def main():
     st.set_page_config(layout="wide")
@@ -44,6 +68,9 @@ def main():
                     tasting_notes = fetch_tasting_notes(selected_bean_id, selected_brewing_detail_id)
                     st.subheader("Tasting Notes for Selected Bean and Brewing Method")
                     st.dataframe(tasting_notes)
+                    selected_tasting_note_id = st.selectbox("Select Tasting Note", [note['id'] for note in tasting_notes])
+                    if selected_tasting_note_id:
+                        display_tasting_note_card(selected_tasting_note_id)
 
     elif path == "Brewing Method":
         brewing_methods = fetch_unique_values("type", "equipment")
@@ -78,6 +105,9 @@ def main():
                     tasting_notes = fetch_tasting_notes(selected_bean_id, selected_brewing_detail_id)
                     st.subheader("Tasting Notes for Selected Bean and Brewing Method")
                     st.dataframe(tasting_notes)
+                    selected_tasting_note_id = st.selectbox("Select Tasting Note", [note['id'] for note in tasting_notes])
+                    if selected_tasting_note_id:
+                        display_tasting_note_card(selected_tasting_note_id)
 
     elif path == "Country of Origin":
         origins = fetch_unique_values("origin", "beans")
@@ -112,6 +142,9 @@ def main():
                     tasting_notes = fetch_tasting_notes(selected_bean_id, selected_brewing_detail_id)
                     st.subheader("Tasting Notes for Selected Bean and Brewing Method")
                     st.dataframe(tasting_notes)
+                    selected_tasting_note_id = st.selectbox("Select Tasting Note", [note['id'] for note in tasting_notes])
+                    if selected_tasting_note_id:
+                        display_tasting_note_card(selected_tasting_note_id)
 
 if __name__ == '__main__':
     main()

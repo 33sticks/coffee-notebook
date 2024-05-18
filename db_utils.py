@@ -78,3 +78,34 @@ def fetch_tasting_notes(bean_id, brewing_detail_id):
         return data
     else:
         return []
+
+def fetch_tasting_note_details(tasting_note_id):
+    conn = get_connection()
+    if conn:
+        cursor = conn.cursor(dictionary=True)
+        query = """
+            SELECT beans.name AS bean_name, 
+                   tasting_notes.date AS tasting_date, 
+                   tasting_notes.aroma, 
+                   tasting_notes.body, 
+                   tasting_notes.flavor_profile, 
+                   tasting_notes.rating, 
+                   tasting_notes.notes, 
+                   brewing_details.grind_size, 
+                   brewing_details.brew_time, 
+                   brewing_details.temperature, 
+                   brewing_details.notes AS brewing_notes, 
+                   equipment.type AS equipment_type 
+            FROM tasting_notes
+            JOIN beans ON tasting_notes.bean_id = beans.id
+            JOIN brewing_details ON tasting_notes.brewing_detail_id = brewing_details.id
+            JOIN equipment ON brewing_details.equipment_id = equipment.id
+            WHERE tasting_notes.id = %s
+        """
+        cursor.execute(query, (tasting_note_id,))
+        data = cursor.fetchone()
+        cursor.close()
+        conn.close()
+        return data
+    else:
+        return None
