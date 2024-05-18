@@ -34,23 +34,23 @@ Welcome to the Coffee Discovery Dashboard project! This interactive dashboard al
 
 1. Clone the repository:
 
-   \`\`\`bash
+   ```bash
    git clone https://github.com/your-username/coffee-discovery-dashboard.git
    cd coffee-discovery-dashboard
-   \`\`\`
+   ```
 
 2. Create and activate a virtual environment:
 
-   \`\`\`bash
+   ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows use `venv\\Scripts\\activate`
-   \`\`\`
+   ```
 
 3. Install the required dependencies:
 
-   \`\`\`bash
+   ```bash
    pip install -r requirements.txt
-   \`\`\`
+   ```
 
 ### Database Setup
 
@@ -58,19 +58,19 @@ Welcome to the Coffee Discovery Dashboard project! This interactive dashboard al
 
 2. Create a new database:
 
-   \`\`\`sql
+   ```sql
    CREATE DATABASE coffee_dashboard;
-   \`\`\`
+   ```
 
 3. Use the database:
 
-   \`\`\`sql
+   ```sql
    USE coffee_dashboard;
-   \`\`\`
+   ```
 
 4. Create the necessary tables:
 
-   \`\`\`sql
+   ```sql
    -- Creating the 'beans' table
    CREATE TABLE beans (
        id INT AUTO_INCREMENT PRIMARY KEY,
@@ -120,15 +120,15 @@ Welcome to the Coffee Discovery Dashboard project! This interactive dashboard al
        FOREIGN KEY (bean_id) REFERENCES beans (id),
        FOREIGN KEY (brewing_detail_id) REFERENCES brewing_details (id)
    );
-   \`\`\`
+   ```
 
 5. Insert sample data if needed for testing:
 
-   \`\`\`sql
+   ```sql
    -- Sample data insertion
    INSERT INTO beans (name, origin, roast_level, manufacturer, process, variety, elevation, manufacturer_website, price_per_lb)
    VALUES ('Ecuador Hacienda La Papaya Oak Barrel Anaerobic', 'Ecuador', 'Medium', 'ONYX Coffee Lab', 'Anaerobic', 'Typica', '1650 MASL', 'https://onyxcoffeelab.com/products/ecuador-hacienda-la-papaya-oak-barrel-anaerobic?variant=40870424772706', 64.00);
-   \`\`\`
+   ```
 
 ### Running the App Locally
 
@@ -136,25 +136,25 @@ Welcome to the Coffee Discovery Dashboard project! This interactive dashboard al
 
    - Create a `.streamlit` directory in the root of your project:
 
-     \`\`\`bash
+     ```bash
      mkdir .streamlit
-     \`\`\`
+     ```
 
    - Create a `secrets.toml` file inside the `.streamlit` directory and add your database credentials:
 
-     \`\`\`toml
+     ```toml
      [db_credentials]
      host = "your_host"
      user = "your_user"
      password = "your_password"
      database = "your_database"
-     \`\`\`
+     ```
 
 2. Run the Streamlit app:
 
-   \`\`\`bash
+   ```bash
    streamlit run app.py
-   \`\`\`
+   ```
 
 ## Deployment
 
@@ -192,5 +192,5 @@ If you have any questions or suggestions, feel free to reach out:
 
 - [jason](mailto:jason@33sticks.com)
 - [Project Repository]([https://github.com/your-username/coffee-discovery-dashboard](https://github.com/33sticks/coffee-notebook/))
-"""
+
 
