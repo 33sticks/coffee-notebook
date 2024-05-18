@@ -191,6 +191,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 If you have any questions or suggestions, feel free to reach out:
 
 - [jason](mailto:jason@33sticks.com)
-- [Project Repository](https://github.com/your-username/coffee-discovery-dashboard](https://github.com/33sticks/coffee-notebook/)
+- [Project Repository](https://github.com/33sticks/coffee-notebook/)
 
 
