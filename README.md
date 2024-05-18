@@ -1,8 +1,3 @@
-# Creating the entire README.md file for the user
-
-readme_content = """
-# Coffee Discovery Dashboard
-
 Welcome to the Coffee Discovery Dashboard project! This interactive dashboard allows users to explore a collection of coffee beans, brewing methods, and tasting notes. Users can embark on a journey of discovery by selecting different paths, such as by manufacturer, brewing method, or country of origin.
 
 ## Table of Contents
@@ -195,12 +190,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 If you have any questions or suggestions, feel free to reach out:
 
-- [Your Name](mailto:your-email@example.com)
-- [Project Repository](https://github.com/your-username/coffee-discovery-dashboard)
+- [jason](mailto:jason@33sticks.com)
+- [Project Repository]([https://github.com/your-username/coffee-discovery-dashboard](https://github.com/33sticks/coffee-notebook/))
 """
 
-# Save to a file
-with open("/mnt/data/README.md", "w") as f:
-    f.write(readme_content)
-
-"/mnt/data/README.md"
